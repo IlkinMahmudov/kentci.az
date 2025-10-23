@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import UserProfile
+from .models import UserProfile, Elan
 
 def login_view(request):
     if request.method == "POST":
@@ -21,5 +21,11 @@ def login_view(request):
 
 def index_view(request):
     user_id = request.session.get("user_id")
-    user = UserProfile.objects.get(id=user_id) if user_id else None
-    return render(request, "index.html", {"user": user})
+    user = UserProfile.objects.filter(id=user_id).first() if user_id else None
+    elanlar = Elan.objects.all().order_by('-tarix')  # ✅ Əlavə olundu
+    return render(request, "index.html", {"user": user, "elanlar": elanlar})
+    
+
+def logout_view(request):
+    request.session.flush()
+    return redirect('login')

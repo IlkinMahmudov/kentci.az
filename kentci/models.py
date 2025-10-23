@@ -1,14 +1,14 @@
 from django.db import models
-from django.db import models
+from django.contrib.auth.models import User
+
 
 class UserProfile(models.Model):
-    user_name = models.CharField("İstifadəçi adı", max_length=150)
-    email = models.EmailField("Email ünvanı", unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     bio = models.TextField("Bio", blank=True, null=True)
     profile_image = models.ImageField("Profil şəkli", upload_to='profil_shekilləri/', blank=True, null=True)
 
     def __str__(self):
-        return self.user_name
+        return self.user.username
 
 class Elan(models.Model):
     ad = models.CharField("Məhsulun adı", max_length=100)
@@ -16,6 +16,7 @@ class Elan(models.Model):
     tarix = models.DateField("Tarix", auto_now_add=True)
     shekil = models.ImageField("Şəkil", upload_to='elanlar/')
     melumat = models.TextField("Qısa məlumat", blank=True, null=True)
+    istifadeci = models.ForeignKey("UserProfile", on_delete=models.CASCADE, null=True, blank=True)  # <-- bu xətt yeni əlavə olunub
 
     def __str__(self):
         return self.ad

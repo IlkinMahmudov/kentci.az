@@ -1,0 +1,114 @@
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #f4f4f4; }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { font-size: 22px; font-weight: bold; color: #007bff; }
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-area img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #007bff;
+        }
+
+        .user-area span { font-weight: 500; }
+
+        .login-btn, .logout-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover, .logout-btn:hover { background: #0056b3; }
+
+        .container { width: 90%; margin: 40px auto; }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+            transition: 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .card-img {
+            position: relative;
+            width: 100%;
+            height: 190px;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .like {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255,255,255,0.85);
+            padding: 6px 9px;
+            border-radius: 50%;
+            font-size: 18px;
+            color: #999;
+            transition: 0.3s;
+        }
+
+        .like:hover { color: red; background: #fff; }
+
+        .card-info { padding: 14px 16px; }
+
+        .rating { font-size: 13px; color: #666; margin-bottom: 4px; }
+
+        .card-info h3 { font-size: 17px; margin: 6px 0; color: #222; }
+
+        .card-info p { font-size: 14px; color: #555; }
+
+        .price { margin-top: 10px; font-weight: bold; color: #d35400; font-size: 17px; }
+
+        @media (max-width: 992px) {
+            .cards { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 576px) {
+            header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .cards { grid-template-columns: 1fr; }
+            .user-area img { width: 38px; height: 38px; }
+        }

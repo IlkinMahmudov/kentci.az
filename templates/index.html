@@ -22,9 +22,112 @@
             border:2px solid #007bff;
         }
         h2 { margin:0; }
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  padding: 40px 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card-img {
+  position: relative;
+  width: 100%;
+  height: 190px;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.like {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #fff;
+  padding: 6px 9px;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.like i{
+    background-color: none;
+    color: white;
+}
+.like i:hover{
+    color: red;
+}
+.card-info {
+  padding: 14px 16px;
+}
+
+.rating {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+.card-info h3 {
+  font-size: 17px;
+  margin: 4px 0;
+}
+
+.card-info p {
+  font-size: 14px;
+  color: #666;
+}
+
+.price {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #d35400;
+  font-size: 17px;
+}
+
+
+@media (max-width: 992px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
     </style>
 </head>
 <body>
+
     {% if user %}
         <div class="profile">
             <img src="{{ user.profile_image.url }}" alt="Profil şəkli">
@@ -33,5 +136,91 @@
     {% else %}
         <p>Daxil olmaq üçün <a href="{% url 'login' %}">buraya kliklə</a>.</p>
     {% endif %}
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+   
+<div class="container">
+  <div class="cards">
+
+    <!-- card1 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="" alt="">
+        <span class="like"><i class="fa-solid fa-heart"></i></span>
+      </div>
+      <div class="card-info">
+        <div class="rating">
+           <span>5.00 (1)</span> · <span>AZ</span>
+        </div>
+        <h3>Candle Making Master Class</h3>
+        <p>Bakı</p>
+        <p>Sat–Sun</p>
+        <div class="price">AZN 28.00</div>
+      </div>
+    </div>
+
+    <!-- card2 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="" alt="">
+        <span class="like"><i class="fa-solid fa-heart"></i></span>
+      </div>
+      <div class="card-info">
+        <div class="rating">
+           <span>AZ</span>
+        </div>
+        <h3>VIP jets in Baku</h3>
+        <p>Bakı</p>
+        <p>Everyday</p>
+        <div class="price">AZN 231.00</div>
+      </div>
+    </div>
+
+    <!-- card3 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="" alt="">
+        <span class="like"><i class="fa-solid fa-heart"></i></span>
+      </div>
+      <div class="card-info">
+        <div class="rating">
+           <span>AZ</span>
+        </div>
+        <h3>Scarf Making with Ebru Art</h3>
+        <p>Bakı</p>
+        <p>Everyday</p>
+        <div class="price">AZN 33.00</div>
+      </div>
+    </div>
+
+    <!-- card4 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="" alt="">
+        <span class="like"><i class="fa-solid fa-heart"></i></span>
+      </div>
+      <div class="card-info">
+        <div class="rating">
+           <span>AZ</span>
+        </div>
+        <h3>Soap Making Masterclass</h3>
+        <p>Bakı</p>
+        <p>Sat–Sun</p>
+        <div class="price">AZN 28.00</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
 </body>
 </html>
